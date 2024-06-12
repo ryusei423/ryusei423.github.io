@@ -1,0 +1,76 @@
+body {
+    /* background: black; */
+
+    /* background: url('3.2_CG16_2_mux_3.mp4'); */
+	/* background-size: 100% 100%; */
+	/* background-repeat: no-repeat; */
+	
+	
+    color: rgb(220,220,220);
+    font-family: 'Segoe UI', monospace;
+}
+
+.videobg{
+	
+	
+	position: fixed;
+	right: -180;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	filter:blur(10px) grayscale(20%);
+	transform: scale(1.1); 
+
+
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main {
+    text-align: center;
+}
+
+
+.controls{
+    position:absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.controls a {
+    color: #8475E6;
+    text-decoration: none;
+}
+
+.modal {
+    position: absolute;
+    width: 500px;
+    top: -500px;
+    min-height: 200px;
+    visibility: hidden;
+    left: 50%;
+
+    border: 1px solid red;
+    background: black;
+
+    transform: translate(-50%, -50%);
+}
+
+.skydome {
+       
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        
+		font-family: 'Segoe UI', monospace;
+		/* 发光 */
+		text-shadow: 0 0 8px rgba(255,255,255,.55);
+		
+}

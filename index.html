@@ -1,1 +1,274 @@
-hello world
+<!-- 
+	WE WILL STAY HERE^
+-->
+<html lang="zh-CN">
+    
+    
+<head>
+   
+	<meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+    <meta name="theme-color" content="#8475E6">
+    <script src="static/particles.min.js"></script>
+	<script src="static/rythm.js"></script>
+    <link rel="stylesheet" href="static/s.css">
+   <!-- <source src="bgm.mp3" type="static/bgm.mp3"> -->
+
+	<title>SKYDOME</title>
+
+    
+	
+</head>
+
+
+<style>
+    
+    body {
+      background-image: url("static/bg.png");
+      background-size: contain;
+
+    }
+	
+	.forums {
+		
+	   
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        
+		
+		background: #eee;
+		
+		font-family: 'Segoe UI', monospace;
+		
+		
+		
+    }
+	
+	.forums-link{
+		text-decoration:none;
+		color:#000000;
+		<!-- color:#4499EE; -->
+		<!-- a:link { text-decoration: none;color: black} -->
+		<!--a:active { text-decoration:black} -->
+		<!--a:hover { text-decoration:underline;color: black}  -->
+		<!--a:visited { text-decoration: none;color: black} -->
+	}
+	
+	.zhanwei{
+		visibility:hidden;
+	}
+	
+	
+	.forums-link{
+		visibility:hidden;
+	}
+
+	
+</style>
+
+<script src="static/title.js"></script>
+
+<!-- 禁用滚动条 -->
+<body style="overflow:-Scroll;overflow-y:hidden">
+	<audio id="bgm" src="static/bgm.mp3"></audio>
+	
+
+	<div class="main center">
+        <div style="font-size: 50px; letter-spacing:3px;" class="skydome" id="logo-little1"><span class="logo-little1">S K Y D O M E . P W</span></div>
+		<div style="font-size: 20px;" class="skydome" id="logo-little"><span class="logo-little">For Counter-Strike 2</span></div>
+		<div style="font-size: 20px;" class="skydome" id="logo-from"><span class="logo-little"></span></div>
+		<b class="zhanwei">    1</b>
+		
+		<div class="skydome" id="zhanwei1">ryusei423@skydome.pw</div>
+		
+		<!-- <a href="https://skydome.pw/forums/index.php" class = "forums-link" id="forums-link"><div style="font-size: 20px;" class="forums"><span class="logo-neon">FORUMS</span></div></a> -->
+
+		
+    </div>
+
+
+
+<div id="particles-js"></div>
+<script src="static/geci.js"></script>
+<script src="static/yiyan.js"></script>
+
+<script>
+		SetTitle();
+		//设置音量
+		function set(){
+			document.getElementById("bgm").volume =0.6;
+		}
+		set();
+		
+
+		var rythm;
+        var initialized = false;
+
+        var init_rythm = () => {
+            rythm = new Rythm();
+			//rythm.addRythm('logo-little1', 'textNeon', 0, 10);
+            rythm.addRythm('logo-little', 'blur', 0, 1,{
+              reverse: true,
+			  max:3
+            })
+            
+            rythm.addRythm('skydome', 'particles', 150, 40, {
+                    to: [223, 181, 209],
+                    from: [240, 102, 150]
+            });
+        };
+		
+		var init = () => {
+            if (initialized)return;
+                init_rythm();
+				//两种方法都能设置音频
+                //rythm.connectExternalAudioElement(bgm);
+                rythm.setMusic('./static/bgm.mp3')
+				//document.getElementById('music').play();
+
+				
+
+				rythm.start();//js会自动开始播放音频
+				GCstart();
+                initialized = true;
+        };
+		
+		//在点击之后初始化界面
+		var init_menu = () => {
+			var zhanwei1 = document.getElementById("zhanwei1");
+			var forums = document.getElementById("forums-link");
+			
+			zhanwei1.style.cssText = "visibility:hidden;";
+			//forums.style.cssText = "visibility:visible;";
+			
+        };
+		
+		//适配谷歌的傻逼安全策略
+		document.documentElement.addEventListener(
+		"mousedown", function(){
+			init_menu();
+			init();
+		})
+
+				
+		
+		
+		
+
+particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 170,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#DFB5D1"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 1,
+                    "random": true,
+					//透明度动画效果
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+					//大小动画效果
+                    "anim": {
+                        "enable": false,
+                        "speed": 4,
+                        "size_min": 0.3,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 0.3,
+                    //"direction": "none",
+					"direction": "bottom",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 600
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 50,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 250,
+                        "size": 0,
+                        "duration": 2,
+                        "opacity": 0,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 400,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+
+</script>
+
+
+
+
+</body>
