@@ -101,12 +101,30 @@
 		
 		var audio = document.getElementById('bgm');
 		var audio_ready = false;
+		var should_play = false;
 		var rythm;
         var initialized = false;
 
 		audio.oncanplaythrough = function() {
 			console.log("audio_ready = true");
 			audio_ready = true;
+			if(should_play){
+				init_rythm();
+				//两种方法都能设置音频
+				//rythm.connectExternalAudioElement(bgm);
+				rythm.setMusic('./static/bgm.mp3')
+				document.getElementById('bgm').play();
+
+				
+
+				rythm.start();//js会自动开始播放音频
+				GCstart();
+			
+			
+			}
+			
+			
+			
 		};
 
 
@@ -126,11 +144,11 @@
 		
 		var init = () => {
             if (initialized)return;
-			
-			while(audio_ready == false){
-				console.log("waiting audio_ready");
-				if(audio_ready) break;			
-			}
+			if(audio_ready == false){
+				initialized = true;
+				document.getElementById("logo-from").innerHTML = "少女祈祷中...";
+				return;
+			};
 			
 			init_rythm();
 			//两种方法都能设置音频
