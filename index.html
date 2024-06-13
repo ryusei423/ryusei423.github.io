@@ -105,6 +105,7 @@
         var initialized = false;
 
 		audio.oncanplaythrough = function() {
+			console.log("audio_ready = true");
 			audio_ready = true;
 		};
 
@@ -127,6 +128,7 @@
             if (initialized)return;
 			
 			while(audio_ready == false){
+				console.log("waiting audio_ready");
 				if(audio_ready) break;			
 			}
 			
