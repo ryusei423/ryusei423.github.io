@@ -71,7 +71,7 @@
 
 <!-- 禁用滚动条 -->
 <body style="overflow:-Scroll;overflow-y:hidden">
-	<audio id="bgm" src="static/bgm.mp3"></audio>
+	<audio id="bgm" preload="auto" src="static/bgm.mp3"></audio>
 	
 
 	<div class="main center">
@@ -123,8 +123,8 @@
             if (initialized)return;
                 init_rythm();
 				//两种方法都能设置音频
-                //rythm.connectExternalAudioElement(bgm);
-                rythm.setMusic('./static/bgm.mp3')
+                rythm.connectExternalAudioElement(bgm);
+                //rythm.setMusic('./static/bgm.mp3')
 				//document.getElementById('music').play();
 
 				
