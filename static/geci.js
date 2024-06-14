@@ -81,6 +81,7 @@ function showLRC() {
 		}
 	}
 	document.getElementById("logo-little").innerHTML = s;
+	document.getElementById("logo-from").innerHTML = "";
 
 }
 
