@@ -146,6 +146,7 @@
             if (initialized)return;
 			if(audio_ready == false){
 				initialized = true;
+				should_play = true;
 				document.getElementById("logo-little").innerHTML = "少女祈祷中...";
 				document.getElementById("logo-from").innerHTML = "";
 				return;
