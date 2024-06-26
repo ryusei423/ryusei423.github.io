@@ -71,7 +71,7 @@
 
 <!-- 禁用滚动条 -->
 <body style="overflow:-Scroll;overflow-y:hidden">
-	<!-- <audio id="bgm" preload="auto" src="static/bgm.mp3"></audio> -->
+	<audio id="bgm" preload="auto" src="static/bgm.mp3"></audio>
 	
 
 	<div class="main center">
@@ -97,7 +97,7 @@
 		//启动标题
 		SetTitle();
 		//设置音量
-		//document.getElementById("bgm").volume =0.6;
+		document.getElementById("bgm").volume =0.6;
 		
 		var audio = document.getElementById('bgm');
 		var audio_ready = false;
@@ -157,7 +157,7 @@
 			//rythm.connectExternalAudioElement(bgm);
 			rythm.setMusic('./static/bgm.mp3')
 			//document.getElementById('bgm').play();
-			console.log("play from init");
+			//console.log("play from init");
 			
 
 			rythm.start();//js会自动开始播放音频
