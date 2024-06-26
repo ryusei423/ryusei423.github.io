@@ -114,7 +114,7 @@
 				//rythm.connectExternalAudioElement(bgm);
 				rythm.setMusic('./static/bgm.mp3')
 				document.getElementById('bgm').play();
-
+				console.log("play from audio.oncanplaythrough");
 				
 
 				rythm.start();//js会自动开始播放音频
@@ -157,7 +157,7 @@
 			//rythm.connectExternalAudioElement(bgm);
 			rythm.setMusic('./static/bgm.mp3')
 			document.getElementById('bgm').play();
-
+			console.log("play from init");
 			
 
 			rythm.start();//js会自动开始播放音频
@@ -178,6 +178,7 @@
 		//适配谷歌的傻逼安全策略
 		document.documentElement.addEventListener(
 		"mousedown", function(){
+			if (initialized)return;
 			init_menu();
 			init();
 		})
