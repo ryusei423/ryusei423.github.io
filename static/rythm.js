@@ -513,23 +513,6 @@
   var reset$15 = function reset(elem) {
     elem.style.color = ''
   }
-  
-  var particles = function (elem, value) {
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    var from = options.from || [0, 0, 0];
-    var to = options.to || [255, 255, 255];
-    var scaleR = (to[0] - from[0]) * value;
-    var scaleG = (to[1] - from[1]) * value;
-    var scaleB = (to[2] - from[2]) * value;
-    var r = Math.floor(to[0] - scaleR), g = Math.floor(to[1] - scaleG), b = Math.floor(to[2] - scaleB);
-
-    window.pJSDom[0].pJS.particles.color.rgb = { r, g, b };
-  };
-
-  var reset$16 = function reset(elem) {
-    elem.style.textShadow = '';
-  };
 
   var Dancer = (function() {
     function Dancer() {
@@ -554,7 +537,6 @@
       this.registerDance('fontSize', fontSize, reset$12)
       this.registerDance('tilt', tilt, reset$14)
       this.registerDance('fontColor', fontColor, reset$15)
-      this.registerDance('particles', particles, reset$16)
     }
 
     createClass(Dancer, [

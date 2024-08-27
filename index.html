@@ -1,193 +1,119 @@
-<!-- 
-	嗯...
--->
 <html lang="zh-CN">
-    
-    
+
+<script src="static/particles.js"></script>
+<script src="static/rythm.js"></script>
+<script src="static/title.js"></script>
+<script src="static/stats.js"></script>
+<!-- <script src="static/app.js"></script> -->
+<script src="static/yiyan.js"></script>
+
 <head>
-   
 	<meta http-equiv=Content-Type content='text/html; charset=utf-8'>
     <meta name="theme-color" content="#8475E6">
-    <script src="static/particles.min.js"></script>
-	<script src="static/rythm.js"></script>
-    <link rel="stylesheet" href="static/s.css">
-   <!-- <source src="bgm.mp3" type="static/bgm.mp3"> -->
-
-	<title>SKYDOME</title>
-
-    
 	
+	<title>SKYDOME</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
-
 
 <style>
     
     body {
-      background-image: url("static/bg.png");
-      background-size: contain;
+    background-image: url("static/IMG_8789.PNG");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    position: relative;
+	}
 
-    }
+	body::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: inherit;
+		background-size: inherit;
+		filter: blur(15px);
+		z-index: -1;
+	}
 	
-	.forums {
+	#particles-js {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: -1; /* 确保particles.js在背景层 */
+    }
 		
-	   
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -o-user-select: none;
+	.container {
+		display: flex;
+		height: 100vh;
+	}
+
+	.left, .right {
+		flex: 1;
+		padding: 20px;
+		display: flex;
+		justify-content: center; /* 水平居中 */
+		align-items: center; /* 垂直居中 */
+		
+		text-shadow: 0 0 8px rgba(255,255,255,.55);/* 发光 */
+		
         user-select: none;
-        
-		
-		background: #eee;
-		
-		font-family: 'Segoe UI', monospace;
-		
-		
-		
-    }
-	
-	.forums-link{
-		text-decoration:none;
-		color:#000000;
-		<!-- color:#4499EE; -->
-		<!-- a:link { text-decoration: none;color: black} -->
-		<!--a:active { text-decoration:black} -->
-		<!--a:hover { text-decoration:underline;color: black}  -->
-		<!--a:visited { text-decoration: none;color: black} -->
-	}
-	
-	.zhanwei{
-		visibility:hidden;
-	}
-	
-	
-	.forums-link{
-		visibility:hidden;
+		font-family: 'Roboto', sans-serif; /* 使用Roboto字体 */
 	}
 
-	
+	.left {
+		background-color: rgba(255, 255, 255, 0);
+		color: white;
+	}
+
+	.right {
+		background-color: rgba(0, 0, 0, 0);
+		color: white;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.container::before {
+		content: "";
+		position: absolute;
+		top: 30px; /* 距离顶部10px */
+		bottom: 30px; /* 距离底部10px */
+		left: 50%;
+		width: 1px; /* 更细的线条 */
+		background: linear-gradient(to bottom, rgba(130, 207, 211, 0.5), rgba(9, 79, 134, 0.5)); /* 设置透明度 */
+	}
+		
+		
 </style>
 
-<script src="static/title.js"></script>
 
-<!-- 禁用滚动条 -->
 <body style="overflow:-Scroll;overflow-y:hidden">
-	<audio id="bgm" preload="auto" src="static/bgm.mp3"></audio>
-	
-
-	<div class="main center">
-        <div style="font-size: 50px; letter-spacing:3px;" class="skydome" id="logo-little1"><span class="logo-little1">S K Y D O M E . P W</span></div>
-		<div style="font-size: 20px;" class="skydome" id="logo-little"><span class="logo-little">For Counter-Strike 2</span></div>
-		<div style="font-size: 20px;" class="skydome" id="logo-from"><span class="logo-little"></span></div>
-		<b class="zhanwei">    1</b>
-		
-		<div class="skydome" id="zhanwei1">ryusei423@skydome.pw</div>
-		
-		<!-- <a href="https://skydome.pw/forums/index.php" class = "forums-link" id="forums-link"><div style="font-size: 20px;" class="forums"><span class="logo-neon">FORUMS</span></div></a> -->
-
-		
+	<div id="particles-js"></div>
+	<div class="container">
+        <div class="left">
+            <div class="content">
+                <!-- 左边内容 -->
+                <h1 style="font-size: 40px;">S K Y D O M E . P W</h1>
+            </div>
+        </div>
+        <div class="right">
+            <div class="content">
+                <!-- 右边内容 -->
+                <h1 id="yiyan">我们无法停止时间 / 只得将车辙留在身后</h1>
+                <p id="yiyan_1">只要你我仍在一起 , 伤口就不会再隐隐作痛</p>
+            </div>
+        </div>
     </div>
 
+</body>
 
-
-<div id="particles-js"></div>
-<script src="static/geci.js"></script>
-<script src="static/yiyan.js"></script>
 
 <script>
-		//启动标题
-		SetTitle();
-		//设置音量
-		document.getElementById("bgm").volume =0.6;
-		
-		var audio = document.getElementById('bgm');
-		var audio_ready = false;
-		var should_play = false;
-		var rythm;
-        var initialized = false;
-
-		audio.oncanplaythrough = function() {
-			console.log("audio_ready = true");
-			audio_ready = true;
-			if(should_play){
-				init_rythm();
-				//两种方法都能设置音频
-				//rythm.connectExternalAudioElement(bgm);
-				rythm.setMusic('./static/bgm.mp3')
-				//document.getElementById('bgm').play();
-				//console.log("play from audio.oncanplaythrough");
-				
-
-				rythm.start();//js会自动开始播放音频
-				GCstart();
-			
-			
-			}
-			
-			
-			
-		};
-
-
-        var init_rythm = () => {
-            rythm = new Rythm();
-			//rythm.addRythm('logo-little1', 'textNeon', 0, 10);
-            rythm.addRythm('logo-little', 'blur', 0, 1,{
-              reverse: true,
-			  max:3
-            })
-            
-            rythm.addRythm('skydome', 'particles', 150, 40, {
-                    to: [223, 181, 209],
-                    from: [240, 102, 150]
-            });
-        };
-		
-		var init = () => {
-            if (initialized)return;
-			if(audio_ready == false){
-				initialized = true;
-				should_play = true;
-				document.getElementById("logo-little").innerHTML = "少女祈祷中...";
-				document.getElementById("logo-from").innerHTML = "";
-				return;
-			};
-			
-			init_rythm();
-			//两种方法都能设置音频
-			//rythm.connectExternalAudioElement(bgm);
-			rythm.setMusic('./static/bgm.mp3')
-			//document.getElementById('bgm').play();
-			//console.log("play from init");
-			
-
-			rythm.start();//js会自动开始播放音频
-			GCstart();
-			initialized = true;
-        };
-		
-		//在点击之后初始化界面
-		var init_menu = () => {
-			var zhanwei1 = document.getElementById("zhanwei1");
-			var forums = document.getElementById("forums-link");
-			
-			zhanwei1.style.cssText = "visibility:hidden;";
-			//forums.style.cssText = "visibility:visible;";
-			
-        };
-		
-		//适配谷歌的傻逼安全策略
-		document.documentElement.addEventListener(
-		"mousedown", function(){
-			if (initialized)return;
-			init_menu();
-			init();
-		})
-
-				
-		
-		
-		
-
+SetHitokoto();
 particlesJS("particles-js", {
             "particles": {
                 "number": {
@@ -198,7 +124,7 @@ particlesJS("particles-js", {
                     }
                 },
                 "color": {
-                    "value": "#DFB5D1"
+                    "value": "#4CA0B0"
                 },
                 "shape": {
                     "type": "circle",
@@ -243,7 +169,7 @@ particlesJS("particles-js", {
                     "enable": true,
                     "speed": 0.3,
                     //"direction": "none",
-					"direction": "bottom",
+					"direction": "top",
                     "random": true,
                     "straight": false,
                     "out_mode": "out",
@@ -297,10 +223,6 @@ particlesJS("particles-js", {
             "retina_detect": true
         });
 
-
 </script>
 
 
-
-
-</body>

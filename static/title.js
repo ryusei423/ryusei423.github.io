@@ -1,7 +1,8 @@
 
 var sw = true;
 
-function titlebar(){
+function switchvar(){
+	sw = !sw;
 	if(sw == true){
 		document.title = "✧SKYDOME✧";
 	}
@@ -10,10 +11,4 @@ function titlebar(){
 	}
 }
 
-function switchvar(){
-	sw = !sw;
-}
-
 setInterval("switchvar()","1000");
-titlebar();
-setInterval("titlebar()","10");
