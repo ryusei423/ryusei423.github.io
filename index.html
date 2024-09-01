@@ -3,8 +3,6 @@
 <script src="static/particles.js"></script>
 <script src="static/rythm.js"></script>
 <script src="static/title.js"></script>
-<script src="static/stats.js"></script>
-<!-- <script src="static/app.js"></script> -->
 <script src="static/yiyan.js"></script>
 
 <head>
@@ -172,13 +170,18 @@ function fadeOut_cb(element, callback) {
 }
 
 
+let music = [
+    ["static/Triage at Dawn (synthwave remix).mp3", "Triage at Dawn (synthwave remix)", "我们坚定地选择反抗 / 我们不会在意结果如何"],
+    ["static/星と君が消えた日 - 泠鸢yousa.mp3", "星と君が消えた日 - 泠鸢yousa", "我仍记得我们初见之日夕阳的余晖 / 那不是结束,而是我们故事的开始"]
+];
 
-
+const cur_music = music[Math.floor(Math.random() * music.length)];
 
 const logo = document.getElementById('logo');
 const yiyan = document.getElementById('yiyan');
 const yiyan_1 = document.getElementById('yiyan_1');
-
+var all_done = false;//跟踪一言完成的状态
+var music_started = false;
 fadeIn(logo);
 fadeIn(yiyan);
 
@@ -186,15 +189,47 @@ fadeIn(yiyan);
 fadeIn_cb(yiyan_1,() => {
 	fadeOut(yiyan);
 	fadeOut_cb(yiyan_1,() => {
-	  SetHitokoto(() => {
+	  SetHitokoto((state) => {
 		fadeIn(yiyan);
-		fadeIn(yiyan_1);
+		fadeIn_cb(yiyan_1,() => {
+			all_done = true;
+		});
 	  
 	  });
 		
 	});
   
 });
+
+document.addEventListener('click', function() {
+			if(all_done == false || music_started == true){
+				return;
+			}
+			
+			music_started = true;
+			
+            var rythm = new Rythm();
+
+			rythm.addRythm('yiyan_1', 'blur', 0, 10)
+			rythm.setMusic(cur_music[0]);
+			
+			
+			
+			fadeOut(yiyan);
+			fadeOut_cb(yiyan_1,() => {
+				yiyan.innerHTML = "正在播放：" + cur_music[1];
+				yiyan_1.innerHTML = cur_music[2];
+				fadeIn(yiyan);
+				fadeIn_cb(yiyan_1,() => {
+				
+				rythm.start()
+				})
+			});
+			
+			
+        });
+
+
 
 
 
