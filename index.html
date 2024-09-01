@@ -121,7 +121,7 @@
             <div class="content">
                 <!-- 右边内容 -->
                 <h1 id="yiyan">我们无法停止时间 / 只得将车辙留在身后</h1>
-                <p id="yiyan_1">只要你我仍在一起 , 伤口就不会再隐隐作痛</p>
+                <p class="yiyan_1" id="yiyan_1">只要你我仍在一起 , 伤口就不会再隐隐作痛</p>
             </div>
         </div>
     </div>
@@ -209,8 +209,13 @@ document.addEventListener('click', function() {
 			music_started = true;
 			
             var rythm = new Rythm();
-
-			rythm.addRythm('yiyan_1', 'blur', 0, 10)
+			rythm.addRythm('yiyan_1', 'particles', 300, 80, {
+                    from: [9, 151, 247],
+                    to: [76, 160, 176]
+            });
+			
+			
+			//rythm.addRythm('yiyan_1', 'blur', 50, 100)
 			rythm.setMusic(cur_music[0]);
 			
 			
