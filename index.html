@@ -16,20 +16,20 @@
 <style>
     
     body {
-    background-image: url("static/IMG_8789.PNG");
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    position: relative;
+		background-image: url("static/121579402_p0.jpg");
+		background-size: cover;
+		margin: 0;
+		padding: 0;
+		position: relative;
 	}
 
 	body::before {
 		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		position: fixed; /* 使用fixed确保覆盖整个视口 */
+		top: -50px; /* 向外扩展模糊区域 */
+		left: -50px; /* 向外扩展模糊区域 */
+		right: -50px; /* 向外扩展模糊区域 */
+		bottom: -50px; /* 向外扩展模糊区域 */
 		background-image: inherit;
 		background-size: inherit;
 		filter: blur(15px);
@@ -175,7 +175,17 @@ let music = [
     ["static/星と君が消えた日 - 泠鸢yousa.mp3", "星と君が消えた日 - 泠鸢yousa", "我仍记得我们初见之日夕阳的余晖 / 那不是结束,而是我们故事的开始"]
 ];
 
+let bg = [
+    "static/IMG_8789.PNG",
+	"static/121579402_p0.jpg"
+];
+
 const cur_music = music[Math.floor(Math.random() * music.length)];
+const body = document.body;
+const randomBg = bg[Math.floor(Math.random() * bg.length)];
+body.style.backgroundImage = `url("${randomBg}")`;
+
+
 
 const logo = document.getElementById('logo');
 const yiyan = document.getElementById('yiyan');
