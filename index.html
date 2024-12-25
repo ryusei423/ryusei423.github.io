@@ -11,6 +11,7 @@
 	
 	<title>SKYDOME</title>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <style>
@@ -84,6 +85,32 @@
 		width: 1px; /* 更细的线条 */
 		background: linear-gradient(to bottom, rgba(130, 207, 211, 0.5), rgba(9, 79, 134, 0.5)); /* 设置透明度 */
 	}
+	
+	.contact {
+        margin-top: 0px;
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        background: rgba(255, 255, 255, 0);
+        border-radius: 5px;
+        transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    .button i {
+        margin-right: 8px;
+        color: #ffffff;  /* 图标颜色为白色 */
+    }
+    .button:hover {
+        background: rgba(255, 255, 255, 0.3); /* 鼠标悬停时稍微变亮 */
+        backdrop-filter: blur(12px);  /* 鼠标悬停时的模糊效果变化 */
+    }
 		
 		
 	.fade-in {
@@ -115,6 +142,10 @@
             <div class="content">
                 <!-- 左边内容 -->
                 <h1 id="logo" style="font-size: 40px;">S K Y D O M E . P W</h1>
+				<div class="contact" id="contact"> 
+					<a href="https://github.com/ryusei423" class="button"><i class="fab fa-github"></i> GitHub</a> 
+					<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=itnyHMYa2YtPtfX2AGX_Vb9_s-S_0Bwa&authKey=sMBV18PmPXK%2FR6%2BH1XtbCI%2BPO67agpn1I4eq94ii0kaNrpTmlbgomtylxeyYAuyS&noverify=0&group_code=648029174" class="button"><i class="fab fa-qq"></i> QQ</a>
+				</div>
             </div>
         </div>
         <div class="right">
@@ -191,11 +222,12 @@ body.style.backgroundImage = `url("${randomBg}")`;
 const logo = document.getElementById('logo');
 const yiyan = document.getElementById('yiyan');
 const yiyan_1 = document.getElementById('yiyan_1');
+const contact = document.getElementById('contact');
 var all_done = false;//跟踪一言完成的状态
 var music_started = false;
 fadeIn(logo);
 fadeIn(yiyan);
-
+fadeIn(contact);
 
 fadeIn_cb(yiyan_1,() => {
 	fadeOut(yiyan);
